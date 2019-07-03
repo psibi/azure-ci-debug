@@ -26,6 +26,13 @@ tar -C temp --force-local -xf temp/a.tar
 rm temp/a.tar
 tar -C temp --force-local -rf ~/jackal.tar .
 
+rm -rf temp
+mkdir temp
+mv b.tar temp
+tar -C temp --force-local -xf temp/b.tar
+rm temp/b.tar
+tar -C temp --force-local -rf ~/jackal.tar .
+
 
 echo "View jackal.tar"
 tar -tvf ~/jackal.tar
