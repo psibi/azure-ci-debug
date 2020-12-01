@@ -1,9 +1,9 @@
 jobs:
-- template: ./.azure/azure-nightly-template-osx.yml
-  parameters:
-    name: macOS
-    vmImage: macOS-latest
-    os: osx
+# - template: ./.azure/azure-nightly-template-osx.yml
+#   parameters:
+#     name: macOS
+#     vmImage: macOS-latest
+#     os: osx
 
 - template: ./.azure/azure-nightly-template-linux.yml
   parameters:
@@ -11,8 +11,8 @@ jobs:
     vmImage: ubuntu-latest
     os: linux
 
-- template: ./.azure/azure-nightly-template-windows.yml
-  parameters:
-   name: Windows
-   vmImage: windows-latest
-   os: windows
+# - template: ./.azure/azure-nightly-template-windows.yml
+#   parameters:
+#    name: Windows
+#    vmImage: windows-latest
+#    os: windows
