@@ -1,0 +1,9 @@
+* azure-ci-debug
+
+Sample repository used to play around with Azure pipelines.
+
+** Scenario
+
+- Multi stage builds: [[https://github.com/psibi/azure-ci-debug/commit/9d457b4][https://github.com/psibi/azure-ci-debug/commit/9d457b4]]
+
+[[file:assets/multistage.png]]
