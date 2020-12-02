@@ -29,7 +29,7 @@ stages:
   - template: ${{ variables.releaseTemplate }}
     parameters:
       environment: 'DEV'
-      artifactName: ${{ variables.artifactName }}
+      releaseTag: ${{ variables.releaseTag }}
 
 - stage: 'Test'
   displayName: 'Release to Test'
@@ -38,7 +38,7 @@ stages:
   - template: ${{ variables.releaseTemplate }}
     parameters:
       environment: 'TEST'
-      artifactName: ${{ variables.artifactName }}
+      releaseTag: ${{ variables.releaseTag }}
 
 - stage: 'Production'
   displayName: 'Release to production'
@@ -47,4 +47,4 @@ stages:
   - template: ${{ variables.releaseTemplate }}
     parameters:
       environment: 'Production'
-      artifactName: ${{ variables.artifactName }}
+      releaseTag: ${{ variables.releaseTag }}

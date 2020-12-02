@@ -2,7 +2,7 @@ parameters:
 - name: environment
   type: string
 
-- name: versionName
+- name: releaseTag
   type: string
 
 jobs:
@@ -15,4 +15,4 @@ jobs:
       deploy:
         steps:
         - script: |
-            echo deploying ${{ parameters.versionName }}
+            echo deploying ${{ parameters.releaseTag }}
