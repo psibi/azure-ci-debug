@@ -6,14 +6,13 @@ parameters:
   type: string
 
 jobs:
-- job: Deployment
+- deployment: Deploy
   environment: ${{ parameters.environment }} # points to environments in Azure DevOps  
   pool:
     vmImage: ubuntu-latest
   strategy:
-    matrix:
-      linux:
-        BUILD: deploy
-  steps:
-  - script: |
-      echo deploying ${{ parameters.versionName }}
+    runOnce:
+      deploy:
+        steps:
+        - script: |
+            echo deploying ${{ parameters.versionName }}
