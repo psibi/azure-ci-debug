@@ -18,6 +18,8 @@ jobs:
         - script: |
             echo deploying ${{ parameters.releaseTag }}
             echo finished
+            exit 1
+          continueOnError: false
           displayName: Deployment
         - script: |
             echo deploying ${{ parameters.releaseTag }}
