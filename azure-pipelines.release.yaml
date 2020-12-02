@@ -6,7 +6,7 @@ parameters:
   type: string
 
 jobs:
-- deployment: Deploy
+- deployment: Deploy ${{ parameters.environment }}
   environment: ${{ parameters.environment }} # points to environments in Azure DevOps  
   pool:
     vmImage: ubuntu-latest
@@ -17,3 +17,9 @@ jobs:
         - script: |
             echo deploying ${{ parameters.releaseTag }}
             echo finished
+          displayName: Deployment
+        - script: |
+            echo deploying ${{ parameters.releaseTag }}
+            echo finished
+          displayName: Integration test
+
