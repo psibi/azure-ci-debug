@@ -6,7 +6,8 @@ parameters:
   type: string
 
 jobs:
-- deployment: Deploy ${{ parameters.environment }}
+- deployment: Deploy
+  displayName: Deploy ${{ parameters.environment }}
   environment: ${{ parameters.environment }} # points to environments in Azure DevOps  
   pool:
     vmImage: ubuntu-latest
