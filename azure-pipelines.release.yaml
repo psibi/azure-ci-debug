@@ -16,3 +16,4 @@ jobs:
         steps:
         - script: |
             echo deploying ${{ parameters.releaseTag }}
+            echo finished
