@@ -1,18 +1,50 @@
-jobs:
-# - template: ./.azure/azure-nightly-template-osx.yml
-#   parameters:
-#     name: macOS
-#     vmImage: macOS-latest
-#     os: osx
+trigger:
+  - master
 
-- template: ./.azure/azure-nightly-template-linux.yml
-  parameters:
-    name: Linux
-    vmImage: ubuntu-latest
-    os: linux
+variables:
+  releaseTag: v0.11
+  releaseTemplate: 'azure-pipelines.release.yml'
 
-# - template: ./.azure/azure-nightly-template-windows.yml
-#   parameters:
-#    name: Windows
-#    vmImage: windows-latest
-#    os: windows
+# pool used in pipeline
+pool:
+  vmImage: 'ubuntu-latest'
+
+stages:
+- stage: CI
+  displayName: 'Continuous Integration'
+  jobs:
+  - job: Build
+    steps:
+    - script: |
+        echo "Inside build"
+  - job: Publish
+    steps:
+    - script: |
+        echo "Inside publish"
+
+- stage: 'Dev'
+  displayName: 'Release to Dev'
+  dependsOn: CI
+  jobs:
+  - template: ${{ variables.releaseTemplate }}
+    parameters:
+      environment: 'DEV'
+      artifactName: ${{ variables.artifactName }}
+
+- stage: 'Test'
+  displayName: 'Release to Test'
+  dependsOn: Dev
+  jobs:
+  - template: ${{ variables.releaseTemplate }}
+    parameters:
+      environment: 'TEST'
+      artifactName: ${{ variables.artifactName }}
+
+- stage: 'Production'
+  displayName: 'Release to production'
+  dependsOn: Test
+  jobs:
+  - template: ${{ variables.releaseTemplate }}
+    parameters:
+      environment: 'Production'
+      artifactName: ${{ variables.artifactName }}
